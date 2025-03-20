@@ -6,7 +6,6 @@ import (
 
 	"github/zjzjzjzj1874/go-zero-temp/zero/internal/svc"
 
-	"github.com/sirupsen/logrus"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -25,6 +24,6 @@ func NewSwaggerGetLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Swagge
 }
 
 func (l *SwaggerGetLogic) SwaggerGet() ([]byte, error) {
-	logrus.Infof("读取swagger文件")
+	logx.Infof("读取swagger文件")
 	return ioutil.ReadFile(l.svcCtx.Config.SwaggerPath)
 }
