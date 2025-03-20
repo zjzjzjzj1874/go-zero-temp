@@ -4,6 +4,7 @@ package handler
 import (
 	"net/http"
 
+	zero "github/zjzjzjzj1874/go-zero-temp/zero/internal/handler/zero"
 	"github/zjzjzjzj1874/go-zero-temp/zero/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -19,5 +20,21 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 		},
 		rest.WithPrefix("/go-zero"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/swagger",
+				Handler: zero.SwaggerHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/swagger-bin",
+				Handler: zero.SwaggerGetHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/zero"),
 	)
 }

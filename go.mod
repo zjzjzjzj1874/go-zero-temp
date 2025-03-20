@@ -5,6 +5,7 @@ go 1.23.7
 require (
 	github.com/go-courier/enumeration v1.3.1
 	github.com/go-playground/validator/v10 v10.25.0
+	github.com/sirupsen/logrus v1.9.3
 	github.com/zeromicro/go-zero v1.8.1
 )
 

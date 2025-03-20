@@ -1,0 +1,214 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/go-zero//liveness": {
+      "get": {
+        "summary": "健康检查",
+        "operationId": "liveness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LivenessResponse"
+            }
+          }
+        },
+        "tags": [
+          "zero"
+        ]
+      }
+    },
+    "/zero/swagger": {
+      "get": {
+        "summary": "swagger文件",
+        "operationId": "swagger",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        },
+        "tags": [
+          "zero"
+        ]
+      }
+    },
+    "/zero/swagger-bin": {
+      "get": {
+        "summary": "swagger文件",
+        "operationId": "swaggerGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        },
+        "tags": [
+          "zero"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "LivenessRequest": {
+      "type": "object",
+      "title": "LivenessRequest"
+    },
+    "LivenessResponse": {
+      "type": "object",
+      "title": "LivenessResponse"
+    },
+    "OperationTimes": {
+      "type": "object",
+      "properties": {
+        "created_time": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updated_time": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "OperationTimes",
+      "required": [
+        "created_time",
+        "创建时间",
+        "updated_time",
+        "更新时间"
+      ]
+    },
+    "Operator": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Operator",
+      "required": [
+        "id",
+        "操作人ID",
+        "name",
+        "操作人名称"
+      ]
+    },
+    "QueryOption": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "default": "10"
+        },
+        "sort_keys": {
+          "type": "string",
+          "default": "-created_time",
+          "description": " \"key1,-key2\""
+        },
+        "project_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "QueryOption",
+      "required": [
+        "当前页",
+        "每页条数",
+        "排序键",
+        "查询键",
+        "不查询的值"
+      ]
+    },
+    "QueryOptionInBody": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "default": "10"
+        },
+        "sort_keys": {
+          "type": "string",
+          "default": "-created_time",
+          "description": " \"key1,-key2\""
+        },
+        "project_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "QueryOptionInBody",
+      "required": [
+        "当前页",
+        "每页条数",
+        "排序键",
+        "查询键",
+        "不查询的值"
+      ]
+    },
+    "Request": {
+      "type": "object",
+      "title": "Request"
+    },
+    "Response": {
+      "type": "object",
+      "title": "Response"
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

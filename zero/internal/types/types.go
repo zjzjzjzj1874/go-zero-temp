@@ -32,3 +32,9 @@ type LivenessRequest struct {
 
 type LivenessResponse struct {
 }
+
+type Request struct {
+}
+
+type Response struct {
+}

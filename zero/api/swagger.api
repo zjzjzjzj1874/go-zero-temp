@@ -1,0 +1,33 @@
+syntax = "v1"
+
+info(
+    title: "zero"
+    desc: "zero"
+    author: "zjzjzjzj"
+    email: "zjzjzjzj1874@gmail.com"
+    version: "v0"
+)
+
+type (
+    Request struct {}
+    Response struct {}
+)
+
+@server(
+	prefix: /zero
+	group: zero
+)
+
+service zero {
+    @doc(
+        summary: "swagger文件"
+    )
+    @handler swagger
+    get /swagger returns (Response)
+
+    @doc(
+        summary: "swagger文件"
+    )
+    @handler swaggerGet
+    get /swagger-bin returns (Response)
+}
