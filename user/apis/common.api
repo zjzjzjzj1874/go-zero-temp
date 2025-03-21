@@ -1,0 +1,19 @@
+
+syntax = "v1"
+
+
+type (
+    OperatorMeta  {
+        ID   string `json:"id,omitempty" bson:"_id,omitempty"`
+        Name string             `json:"name" bson:"name" description:"名称"`
+    }
+    QueryOptions {
+        Page           int64    `form:"page,default=1,optional" description:"当前页"`
+		PageSize       int64    `form:"page_size,default=10,optional" description:"每页数量"`
+		Search         string   `form:"search,optional" description:"搜索"`
+		SortKeys       string   `form:"sort_keys,optional,default=-create_time" description:"排序"`
+		ProjectFields  []string `form:"projectFields,optional" description:"排序"`
+		ExcludeFields  []string `form:"excludeFields,optional" description:"排序"`
+    }
+)
+

@@ -1,0 +1,143 @@
+syntax = "v1"
+
+
+type (
+	// 用户登录
+	LoginStaffData {
+		Uid    string `json:"uid"  description:"_id"`
+		Name   string `json:"name" description:"姓名"`
+		Email  string `json:"email" description:"邮箱"`
+		Token  string `json:"token" description:"jwt"`
+		Expire int64  `json:"expire" description:"过期时间"`
+	}
+	LoginStaffReq {
+		Ticket string `json:"ticket" description:"登录ticket"`
+	}
+	LoginStaffResp {
+		Code int32           `json:"code,default=200" description:"返回码"`
+		Msg  string          `json:"msg,default=请求成功" description:"消息说明"`
+		Data *LoginStaffData `json:"data" description:"jwt数据"`
+	}
+	// 新增用户信息
+	AddStaffReq {
+		Name       string `json:"name" description:"姓名"`
+		Email      string `json:"email" description:"用户邮箱"`
+		OnJob      int32  `json:"on_job"  description:"是否在职"`
+	}
+	AddStaffResp {
+		Code int32  `json:"code,default=200" description:"返回码"`
+		Msg  string `json:"msg,default=请求成功" description:"消息说明"`
+	}
+	// 删除用户信息
+	DeleteStaffReq {
+		Id string `path:"id" description:"objectId"`
+	}
+	DeleteStaffResp {
+		Code int32  `json:"code,default=200" description:"返回码"`
+		Msg  string `json:"msg,default=请求成功" description:"消息说明"`
+	}
+
+	// 修改用户信息
+	ChangeStaffReq {
+		Id         string `json:"id" description:"objectId"`
+		Name       string `json:"name,optional" description:"姓名"`
+		Email      string `json:"email,optional" description:"用户邮箱"`
+		OnJob      int32  `json:"on_job,optional"  description:"是否在职"`
+	}
+	ChangeStaffResp {
+		Code int32  `json:"code,default=200" description:"返回码"`
+		Msg  string `json:"msg,default=请求成功" description:"消息说明"`
+	}
+
+	// 获取用户信息
+	StaffInfo {
+		ID         string   `json:"id" description:"objectId"`
+		Name       string   `json:"name" description:"姓名"`
+		Phone      string   `json:"phone" description:"用户电话"`
+		Email      string   `json:"email" description:"邮箱"`
+		OnJob      int32    `json:"on_job" description:"是否在职"`
+		Roles      []string `json:"roles" description:"角色列表,角色需要进行分配"`
+		CreateTime string   `json:"create_time" description:"创建时间"`
+		UpdateTime string   `json:"update_time" description:"更新时间"`
+	}
+	// 获取用户详情
+	GetStaffReq {
+		Id string `path:"id" description:"objectId"`
+	}
+	GetStaffResp {
+		Code int32      `json:"code,default=200" description:"返回码"`
+		Msg  string     `json:"msg,default=请求成功" description:"消息说明"`
+		Data *StaffInfo `json:"data" description:"jwt数据"`
+	}
+
+	// 获取用户列表
+	ListStaffsReq {
+		Page          int32    `form:"page,optional" description:"当前页"`
+		PageSize      int32    `form:"page_size,optional" description:"每页数量"`
+		Name          string   `form:"name,optional" description:"姓名"`
+		Email         string   `form:"email,optional" description:"邮箱"`
+		Search        string   `form:"search,optional" description:"搜索"`
+		SortKeys      string   `form:"sortKeys,optional" description:"排序"`
+		ProjectFields []string `form:"project_fields,optional" description:"返回字段"`
+		ExcludeFields []string `form:"exclude_fields,optional" description:"排除字段"`
+	}
+	ListStaffsResp {
+		Code      int32        `json:"code,default=200" description:"返回码"`
+		Msg       string       `json:"msg,default=请求成功" description:"消息说明"`
+		Data      []StaffInfo `json:"data" description:"员工列表"`
+		Count     int64        `json:"count" description:"总数"`
+		TotalPage int64        `json:"total_page" description:"总页数"`
+	}
+)
+
+
+@server(
+	jwt: Auth
+	middleware: Permission
+	group: staff
+)
+service user-api {
+	// ===========================后台用户接口=============================
+    @doc(
+		summary: 新增用户
+	)
+	@handler AddStaff
+	post /user/add-staff(AddStaffReq) returns(AddStaffResp)
+	
+	@doc(
+		summary: 删除用户
+	)
+	@handler DeleteStaff
+	delete /user/delete-staff/:id(DeleteStaffReq) returns(DeleteStaffResp)
+	
+	@doc(
+		summary: 修改用户
+	)
+	@handler ChangeStaff
+	put /user/change-staff(ChangeStaffReq) returns(ChangeStaffResp)
+	
+	@doc(
+		summary: 查询用户
+	)
+	@handler GetStaff
+	get /user/get-staff/:id(GetStaffReq) returns(GetStaffResp)
+	
+	@doc(
+		summary: 用户列表
+	)
+	@handler ListStaffs
+	get /user/list-staffs(ListStaffsReq) returns(ListStaffsResp)
+}
+
+
+@server(
+	group: staff
+)
+service user-api {
+	// ===========================后台用户接口=============================
+	@doc(
+		summary: 后台用户登录
+	)
+	@handler LoginStaff
+	post /user/login-staff(LoginStaffReq) returns(LoginStaffResp)
+}

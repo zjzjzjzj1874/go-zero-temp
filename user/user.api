@@ -1,0 +1,17 @@
+syntax = "v1"
+
+info(
+	title: "user-api"
+	desc: "用户模块api"
+	author: "zjzj"
+	email: "zjzjzjzj1874@gmail.com"
+	version: 1.0
+)
+
+import (
+	"apis/common.api"
+	"apis/customer.api"
+	"apis/staff.api"
+	"apis/liveness.api"
+	"apis/swagger.api"
+)
