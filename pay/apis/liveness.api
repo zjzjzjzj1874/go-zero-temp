@@ -1,0 +1,20 @@
+syntax = "v1"
+
+info(
+	title: " pay-api"
+	desc: "支付模块"
+	author: "zj"
+	email: "zjzjzjzj1874@gmail.com"
+	version: 1.0
+)
+
+@server(
+	prefix: pay
+	group: liveness
+)
+
+service  pay-api {
+	@doc summary: 支付服务探针接口
+	@handler Liveness
+	get /liveness
+}

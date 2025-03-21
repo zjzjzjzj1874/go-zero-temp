@@ -1,0 +1,7 @@
+Name: pay-api
+Host: 0.0.0.0
+Port: 18889
+
+Auth:
+  AccessSecret: bW9uZ28gMTAuMjUyLjIuOToyNzAxNy9hZG1pbi
+  AccessExpire: 86400

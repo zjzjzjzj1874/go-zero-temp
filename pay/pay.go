@@ -4,11 +4,12 @@ import (
 	_ "embed"
 	"flag"
 	"fmt"
+
 	"github/zjzjzjzj1874/go-zero-temp/common/cors"
 	"github/zjzjzjzj1874/go-zero-temp/constants/errors"
-	"github/zjzjzjzj1874/go-zero-temp/zero/internal/config"
-	"github/zjzjzjzj1874/go-zero-temp/zero/internal/handler"
-	"github/zjzjzjzj1874/go-zero-temp/zero/internal/svc"
+	"github/zjzjzjzj1874/go-zero-temp/pay/internal/config"
+	"github/zjzjzjzj1874/go-zero-temp/pay/internal/handler"
+	"github/zjzjzjzj1874/go-zero-temp/pay/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/logx"
@@ -16,7 +17,7 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-var configFile = flag.String("f", "etc/zero.yaml", "the config file")
+var configFile = flag.String("f", "etc/pay-api.yaml", "the config file")
 
 func main() {
 	flag.Parse()
@@ -28,7 +29,6 @@ func main() {
 
 	server := rest.MustNewServer(c.RestConf, cors.Opt)
 	defer server.Stop()
-
 	httpx.SetErrorHandler(errors.ErrorRestfulHandler) // 自定义错误返回,restful类型
 
 	ctx := svc.NewServiceContext(c)
@@ -39,5 +39,5 @@ func main() {
 	server.Start()
 }
 
-//go:embed zero.json
+//go:embed pay.json
 var swagger []byte
