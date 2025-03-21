@@ -1,0 +1,10 @@
+Name: access
+Host: 0.0.0.0
+Port: 18886
+
+Mysql:
+  DataSource: root:123456@tcp(localhost:3306)/access?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+CacheRedis:
+  - Host: localhost:6379
+    Type: node

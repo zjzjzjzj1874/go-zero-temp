@@ -1,0 +1,27 @@
+syntax = "v1"
+
+info(
+    title: "权限角色"
+    desc: "探活"
+    author: "zjzjzjzj"
+    email: "zjzjzjzj1874@gmail.com"
+    version: "v0"
+)
+
+type (
+    LivenessRequest struct {}
+
+    LivenessResponse struct {}
+)
+
+@server(
+	prefix: access/
+)
+
+service access {
+    @doc(
+        summary: "健康检查"
+    )
+    @handler liveness
+    get /liveness (LivenessRequest) returns (LivenessResponse)
+}

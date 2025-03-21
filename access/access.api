@@ -1,0 +1,7 @@
+import (
+	"api/common.api"
+	"api/liveness.api"
+	"api/swagger.api"
+	"api/role.api"
+	"api/permission.api"
+)

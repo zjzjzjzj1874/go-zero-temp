@@ -1,0 +1,42 @@
+syntax = "v1"
+
+info(
+    title: "zero"
+    desc: "角色"
+    author: "zjzjzjzj"
+    email: "zjzjzjzj1874@gmail.com"
+    version: "v0"
+)
+
+@server(
+	prefix: /access
+	group: role
+)
+
+service access {
+	// 角色管理
+	@doc(summary: "创建角色")
+	@handler createRole
+	post /roles (CreateRoleReq) returns (BaseResp)
+
+	@doc(summary: "更新角色")
+	@handler updateRole
+	put /roles/:id (UpdateRoleReq) returns (BaseResp)
+
+	@doc(summary: "删除角色")
+	@handler deleteRole
+	delete /roles/:id returns (BaseResp)
+
+	@doc(summary: "获取角色列表")
+	@handler getRoleList
+	get /roles (RoleListReq) returns (RoleListResp)
+
+	// 角色权限关联
+	@doc(summary: "为角色分配权限")
+	@handler assignPermissions
+	post /roles/:roleId/permissions (RolePermissionReq) returns (BaseResp)
+
+	@doc(summary: "获取角色的权限列表")
+	@handler getRolePermissions
+	get /roles/:roleId/permissions returns (RolePermissionResp)
+}

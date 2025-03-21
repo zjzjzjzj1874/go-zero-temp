@@ -1,0 +1,103 @@
+syntax = "v1"
+
+info(
+	title: "权限管理服务"
+	desc: "结构体定义"
+	author: "zjzjzjzj"
+	email: "zjzjzjzj1874@gmail.com"
+	version: "v0"
+)
+
+type (
+	// 角色相关
+	Role {
+		Id          int64  `json:"id"`
+		Name        string `json:"name"`        // 角色名称
+		Description string `json:"description"` // 角色描述
+		Status      int    `json:"status"`      // 状态：0-禁用 1-启用
+		CreateTime  int64  `json:"createTime"`
+		UpdateTime  int64  `json:"updateTime"`
+	}
+
+	CreateRoleReq {
+		Name        string `json:"name"`
+		Description string `json:"description,optional"`
+	}
+
+	UpdateRoleReq {
+		Id          int64  `json:"id"`
+		Name        string `json:"name,optional"`
+		Description string `json:"description,optional"`
+		Status      int    `json:"status,optional"`
+	}
+
+	RoleListReq {
+		Page     int    `json:"page,optional,default=1"`
+		PageSize int    `json:"pageSize,optional,default=20"`
+		Name     string `json:"name,optional"`
+		Status   int    `json:"status,optional,default=-1"`
+	}
+
+	RoleListResp {
+		Total int64  `json:"total"`
+		List  []Role `json:"list"`
+	}
+
+	// 权限相关
+	Permission {
+		Id          int64  `json:"id"`
+		Name        string `json:"name"`        // 权限名称
+		Type        string `json:"type"`        // 权限类型：api-接口权限
+		Description string `json:"description"` // 权限描述
+		Resource    string `json:"resource"`    // 资源标识（如API路径）
+		Action      string `json:"action"`      // 操作类型（如GET/POST等）
+		Status      int    `json:"status"`      // 状态：0-禁用 1-启用
+		CreateTime  int64  `json:"createTime"`
+		UpdateTime  int64  `json:"updateTime"`
+	}
+
+	CreatePermissionReq {
+		Name        string `json:"name"`
+		Type        string `json:"type"`
+		Description string `json:"description,optional"`
+		Resource    string `json:"resource"`
+		Action      string `json:"action"`
+	}
+
+	UpdatePermissionReq {
+		Id          int64  `json:"id"`
+		Name        string `json:"name,optional"`
+		Description string `json:"description,optional"`
+		Resource    string `json:"resource,optional"`
+		Action      string `json:"action,optional"`
+		Status      int    `json:"status,optional"`
+	}
+
+	PermissionListReq {
+		Page     int    `json:"page,optional,default=1"`
+		PageSize int    `json:"pageSize,optional,default=20"`
+		Name     string `json:"name,optional"`
+		Type     string `json:"type,optional"`
+		Status   int    `json:"status,optional,default=-1"`
+	}
+
+	PermissionListResp {
+		Total int64        `json:"total"`
+		List  []Permission `json:"list"`
+	}
+
+	// 角色权限关联
+	RolePermissionReq {
+		RoleId        int64   `json:"roleId"`
+		PermissionIds []int64 `json:"permissionIds"`
+	}
+
+	RolePermissionResp {
+		PermissionIds []int64 `json:"permissionIds"`
+	}
+
+	// 通用响应
+	BaseResp {
+		Id int64 `json:"id,optional"`
+	}
+)

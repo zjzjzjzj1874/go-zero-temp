@@ -1,0 +1,34 @@
+syntax = "v1"
+
+info(
+    title: "zero"
+    desc: "权限"
+    author: "zjzjzjzj"
+    email: "zjzjzjzj1874@gmail.com"
+    version: "v0"
+)
+
+@server(
+	prefix: /access
+	group: permission
+)
+
+service access {
+	// 权限管理
+	@doc(summary: "创建权限")
+	@handler createPermission
+	post /permissions (CreatePermissionReq) returns (BaseResp)
+
+	@doc(summary: "更新权限")
+	@handler updatePermission
+	put /permissions/:id (UpdatePermissionReq) returns (BaseResp)
+
+	@doc(summary: "删除权限")
+	@handler deletePermission
+	delete /permissions/:id returns (BaseResp)
+
+	@doc(summary: "获取权限列表")
+	@handler getPermissionList
+	get /permissions (PermissionListReq) returns (PermissionListResp)
+
+}
