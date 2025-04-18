@@ -99,31 +99,31 @@ type (
 service user-api {
 	// ===========================后台用户接口=============================
     @doc(
-		summary: 新增用户
+		summary: "新增用户"
 	)
 	@handler AddStaff
 	post /user/add-staff(AddStaffReq) returns(AddStaffResp)
 	
 	@doc(
-		summary: 删除用户
+		summary: "删除用户"
 	)
 	@handler DeleteStaff
 	delete /user/delete-staff/:id(DeleteStaffReq) returns(DeleteStaffResp)
 	
 	@doc(
-		summary: 修改用户
+		summary: "修改用户"
 	)
 	@handler ChangeStaff
 	put /user/change-staff(ChangeStaffReq) returns(ChangeStaffResp)
 	
 	@doc(
-		summary: 查询用户
+		summary: "查询用户"
 	)
 	@handler GetStaff
 	get /user/get-staff/:id(GetStaffReq) returns(GetStaffResp)
 	
 	@doc(
-		summary: 用户列表
+		summary: "用户列表"
 	)
 	@handler ListStaffs
 	get /user/list-staffs(ListStaffsReq) returns(ListStaffsResp)
@@ -136,7 +136,7 @@ service user-api {
 service user-api {
 	// ===========================后台用户接口=============================
 	@doc(
-		summary: 后台用户登录
+		summary: "后台用户登录"
 	)
 	@handler LoginStaff
 	post /user/login-staff(LoginStaffReq) returns(LoginStaffResp)

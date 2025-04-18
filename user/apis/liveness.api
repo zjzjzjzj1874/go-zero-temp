@@ -3,7 +3,7 @@ syntax = "v1"
 
 service user-api {
     @doc(
-		summary: user-api服务探针接口
+		summary: "user-api服务探针接口"
 	)
 	@handler Liveness
 	get /user/liveness

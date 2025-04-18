@@ -1,1030 +1,1003 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "user-api",
-    "description": "用户模块api",
-    "version": ""
-  },
-  "schemes": [
-    "http",
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
   ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "zero swagger",
+    "title": "user-api",
+    "termsOfService": "https://github.com/zjzjzjzj1874/go-zero-temp",
+    "contact": {
+      "name": "zjzj",
+      "url": "https://github.com/zjzjzjzj1874/go-zero-temp",
+      "email": "zjzjzjzj1874@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/zjzjzjzj1874/go-zero-temp"
+    },
+    "version": "v1"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/v1",
   "paths": {
     "/customers/bind": {
       "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "微信手机号绑定",
-        "operationId": "LoginBindPhone",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/LoginBindPhoneResp"
-            }
-          }
-        },
         "parameters": [
           {
-            "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginBindPhoneReq"
+              "type": "object",
+              "properties": {
+                "browser_fingerprint": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "phone_auth": {
+                  "type": "string"
+                },
+                "wechat_id": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
-        "tags": [
-          "customer"
-        ]
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "head_img_url"
+                      ],
+                      "properties": {
+                        "extra": {
+                          "type": "string"
+                        },
+                        "head_img_url": {
+                          "type": "string"
+                        },
+                        "token": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/customers/get-phone-auth": {
       "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "获取手机验证码",
-        "operationId": "GetCellPhoneAuth",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/GetCellPhoneAuthResp"
-            }
-          }
-        },
         "parameters": [
           {
-            "name": "body",
-            "description": " 获取手机验证码",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/GetCellPhoneAuthReq"
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
-        "tags": [
-          "customer"
-        ]
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/customers/login-phone": {
       "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "客户登录",
-        "operationId": "LoginPhone",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/LoginPhoneResp"
-            }
-          }
-        },
         "parameters": [
           {
-            "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginPhoneReq"
+              "type": "object",
+              "properties": {
+                "browser_fingerprint": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "phone_auth": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
-        "tags": [
-          "customer"
-        ]
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "head_img_url"
+                      ],
+                      "properties": {
+                        "extra": {
+                          "type": "string"
+                        },
+                        "head_img_url": {
+                          "type": "string"
+                        },
+                        "token": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/customers/login-wechat": {
       "post": {
-        "summary": "微信扫码登录",
-        "operationId": "LoginWechat",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/LoginWechatResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LoginWechatReq"
-            }
-          }
-        ],
-        "tags": [
-          "customer"
-        ]
-      }
-    },
-    "/users/add-staff": {
-      "post": {
-        "summary": "新增用户",
-        "operationId": "AddStaff",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/AddStaffResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "description": " 新增用户信息",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddStaffReq"
-            }
-          }
-        ],
-        "tags": [
-          "staff"
-        ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
-    "/users/change-staff": {
-      "put": {
-        "summary": "修改用户",
-        "operationId": "ChangeStaff",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ChangeStaffResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "description": " 修改用户信息",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ChangeStaffReq"
-            }
-          }
-        ],
-        "tags": [
-          "staff"
-        ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
-    "/users/delete-staff/{id}": {
-      "delete": {
-        "summary": "删除用户",
-        "operationId": "DeleteStaff",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/DeleteStaffResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "description": " 删除用户信息",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DeleteStaffReq"
-            }
-          }
-        ],
-        "tags": [
-          "staff"
-        ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
-    "/users/get-staff/{id}": {
-      "get": {
-        "summary": "查询用户",
-        "operationId": "GetStaff",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/GetStaffResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "staff"
-        ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
-    "/users/list-staffs": {
-      "get": {
-        "summary": "用户列表",
-        "operationId": "ListStaffs",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ListStaffsResp"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "当前页",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "每页数量",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "姓名",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "邮箱",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "搜索",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "排序",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "返回字段",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "排除字段",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "staff"
-        ],
         "consumes": [
-          "multipart/form-data"
+          "application/json"
         ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
-    "/users/liveness": {
-      "get": {
-        "summary": "user-api服务探针接口",
-        "operationId": "Liveness",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {}
-          }
-        },
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
         "tags": [
-          "users-api"
-        ]
-      }
-    },
-    "/users/login-staff": {
-      "post": {
-        "summary": "后台用户登录",
-        "operationId": "LoginStaff",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/LoginStaffResp"
-            }
-          }
-        },
+          ""
+        ],
+        "summary": "微信扫码登录",
         "parameters": [
           {
-            "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginStaffReq"
+              "type": "object",
+              "properties": {
+                "browser_fingerprint": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
-        "tags": [
-          "staff"
-        ]
-      }
-    },
-    "/users/swagger": {
-      "get": {
-        "summary": "swagger文件",
-        "operationId": "swagger",
         "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {}
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "head_img_url"
+                      ],
+                      "properties": {
+                        "extra": {
+                          "type": "string"
+                        },
+                        "head_img_url": {
+                          "type": "string"
+                        },
+                        "token": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
           }
-        },
+        }
+      }
+    },
+    "/user/add-staff": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
         "tags": [
-          "swagger"
-        ]
+          ""
+        ],
+        "summary": "新增用户",
+        "parameters": [
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "on_job": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/change-staff": {
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "修改用户",
+        "parameters": [
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "on_job": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/delete-staff/{id}": {
+      "delete": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "删除用户",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/get-staff/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "查询用户",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "roles"
+                      ],
+                      "properties": {
+                        "create_time": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "on_job": {
+                          "type": "integer"
+                        },
+                        "phone": {
+                          "type": "string"
+                        },
+                        "roles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "update_time": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/list-staffs": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "用户列表",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "page",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "integer",
+            "name": "page_size",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "string",
+            "name": "email",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "string",
+            "name": "search",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "string",
+            "name": "sortKeys",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "name": "project_fields",
+            "in": "query",
+            "allowEmptyValue": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "name": "exclude_fields",
+            "in": "query",
+            "allowEmptyValue": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "required": [
+                        "roles"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "roles"
+                        ],
+                        "properties": {
+                          "create_time": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "on_job": {
+                            "type": "integer"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "roles": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "update_time": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "properties": {
+                        "create_time": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "on_job": {
+                          "type": "integer"
+                        },
+                        "phone": {
+                          "type": "string"
+                        },
+                        "roles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "update_time": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    },
+                    "total_page": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/liveness": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "user-api服务探针接口",
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {},
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login-staff": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "后台用户登录",
+        "parameters": [
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ticket": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "default": 200,
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "expire": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "token": {
+                          "type": "string"
+                        },
+                        "uid": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "default": "请求成功",
+                      "example": "请求成功"
+                    }
+                  }
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/swagger": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
+        "summary": "swagger文件",
+        "responses": {
+          "default": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {},
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
-  "definitions": {
-    "AddStaffReq": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "on_job": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "AddStaffReq",
-      "required": [
-        "name",
-        "姓名",
-        "email",
-        "用户邮箱",
-        "on_job",
-        "是否在职"
-      ]
-    },
-    "AddStaffResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        }
-      },
-      "title": "AddStaffResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明"
-      ]
-    },
-    "ChangeStaffReq": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "on_job": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "ChangeStaffReq",
-      "required": [
-        "id",
-        "objectId",
-        "姓名",
-        "用户邮箱",
-        "是否在职"
-      ]
-    },
-    "ChangeStaffResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        }
-      },
-      "title": "ChangeStaffResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明"
-      ]
-    },
-    "DeleteStaffReq": {
-      "type": "object",
-      "title": "DeleteStaffReq"
-    },
-    "DeleteStaffResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        }
-      },
-      "title": "DeleteStaffResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明"
-      ]
-    },
-    "GetCellPhoneAuthReq": {
-      "type": "object",
-      "properties": {
-        "phone": {
-          "type": "string"
-        }
-      },
-      "title": "GetCellPhoneAuthReq",
-      "required": [
-        "phone",
-        "客户电话"
-      ]
-    },
-    "GetCellPhoneAuthResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        }
-      },
-      "title": "GetCellPhoneAuthResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明"
-      ]
-    },
-    "GetStaffReq": {
-      "type": "object",
-      "title": "GetStaffReq"
-    },
-    "GetStaffResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "$ref": "#/definitions/StaffInfo"
-        }
-      },
-      "title": "GetStaffResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "jwt数据"
-      ]
-    },
-    "ListStaffsReq": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "page_size": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "search": {
-          "type": "string"
-        },
-        "sortKeys": {
-          "type": "string"
-        },
-        "project_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "exclude_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "title": "ListStaffsReq",
-      "required": [
-        "当前页",
-        "每页数量",
-        "姓名",
-        "邮箱",
-        "搜索",
-        "排序",
-        "返回字段",
-        "排除字段"
-      ]
-    },
-    "ListStaffsResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StaffInfo"
-          }
-        },
-        "count": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "total_page": {
-          "type": "integer",
-          "format": "int64"
-        }
-      },
-      "title": "ListStaffsResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "员工列表",
-        "count",
-        "总数",
-        "total_page",
-        "总页数"
-      ]
-    },
-    "LoginBindPhoneReq": {
-      "type": "object",
-      "properties": {
-        "phone": {
-          "type": "string"
-        },
-        "phone_auth": {
-          "type": "string"
-        },
-        "wechat_id": {
-          "type": "string"
-        },
-        "browser_fingerprint": {
-          "type": "string"
-        }
-      },
-      "title": "LoginBindPhoneReq",
-      "required": [
-        "phone",
-        "手机号",
-        "phone_auth",
-        "手机验证码",
-        "wechat_id",
-        "微信ID",
-        "browser_fingerprint",
-        "浏览器指纹"
-      ]
-    },
-    "LoginBindPhoneResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "$ref": "#/definitions/LoginPhoneData"
-        }
-      },
-      "title": "LoginBindPhoneResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "登录数据"
-      ]
-    },
-    "LoginPhoneData": {
-      "type": "object",
-      "properties": {
-        "token": {
-          "type": "string"
-        },
-        "extra": {
-          "type": "string"
-        },
-        "head_img_url": {
-          "type": "string"
-        }
-      },
-      "title": "LoginPhoneData",
-      "required": [
-        "token",
-        "jwt",
-        "extra",
-        "额外信息",
-        "head_img_url",
-        "用户头像:微信登陆有"
-      ]
-    },
-    "LoginPhoneReq": {
-      "type": "object",
-      "properties": {
-        "phone": {
-          "type": "string"
-        },
-        "phone_auth": {
-          "type": "string"
-        },
-        "browser_fingerprint": {
-          "type": "string"
-        }
-      },
-      "title": "LoginPhoneReq",
-      "required": [
-        "phone",
-        "手机号",
-        "phone_auth",
-        "手机验证码",
-        "browser_fingerprint",
-        "浏览器指纹"
-      ]
-    },
-    "LoginPhoneResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "$ref": "#/definitions/LoginPhoneData"
-        }
-      },
-      "title": "LoginPhoneResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "登录数据"
-      ]
-    },
-    "LoginStaffData": {
-      "type": "object",
-      "properties": {
-        "uid": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        },
-        "expire": {
-          "type": "integer",
-          "format": "int64"
-        }
-      },
-      "title": "LoginStaffData",
-      "required": [
-        "uid",
-        "_id",
-        "name",
-        "姓名",
-        "email",
-        "邮箱",
-        "token",
-        "jwt",
-        "expire",
-        "过期时间"
-      ]
-    },
-    "LoginStaffReq": {
-      "type": "object",
-      "properties": {
-        "ticket": {
-          "type": "string"
-        }
-      },
-      "title": "LoginStaffReq",
-      "required": [
-        "ticket",
-        "登录ticket"
-      ]
-    },
-    "LoginStaffResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "$ref": "#/definitions/LoginStaffData"
-        }
-      },
-      "title": "LoginStaffResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "jwt数据"
-      ]
-    },
-    "LoginWechatReq": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "browser_fingerprint": {
-          "type": "string"
-        }
-      },
-      "title": "LoginWechatReq",
-      "required": [
-        "code",
-        "登录Code",
-        "browser_fingerprint",
-        "浏览器指纹"
-      ]
-    },
-    "LoginWechatResp": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "default": "200"
-        },
-        "msg": {
-          "type": "string",
-          "default": "请求成功"
-        },
-        "data": {
-          "$ref": "#/definitions/LoginPhoneData"
-        }
-      },
-      "title": "LoginWechatResp",
-      "required": [
-        "code",
-        "返回码",
-        "msg",
-        "消息说明",
-        "data",
-        "登录数据"
-      ]
-    },
-    "OperatorMeta": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "title": "OperatorMeta",
-      "required": [
-        "name",
-        "名称"
-      ]
-    },
-    "QueryOptions": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int64",
-          "default": "1"
-        },
-        "page_size": {
-          "type": "integer",
-          "format": "int64",
-          "default": "10"
-        },
-        "search": {
-          "type": "string"
-        },
-        "sort_keys": {
-          "type": "string",
-          "default": "-create_time"
-        },
-        "projectFields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "excludeFields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "title": "QueryOptions",
-      "required": [
-        "当前页",
-        "每页数量",
-        "搜索",
-        "排序"
-      ]
-    },
-    "StaffInfo": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "on_job": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "roles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "create_time": {
-          "type": "string"
-        },
-        "update_time": {
-          "type": "string"
-        }
-      },
-      "title": "StaffInfo",
-      "required": [
-        "id",
-        "objectId",
-        "name",
-        "姓名",
-        "phone",
-        "用户电话",
-        "email",
-        "邮箱",
-        "on_job",
-        "是否在职",
-        "roles",
-        "角色列表",
-        "create_time",
-        "创建时间",
-        "update_time",
-        "更新时间"
-      ]
-    }
-  },
-  "securityDefinitions": {
-    "apiKey": {
-      "type": "apiKey",
-      "description": "Enter JWT Bearer token **_only_**",
-      "name": "Authorization",
-      "in": "header"
-    }
-  }
+  "x-date": "2025-04-18 16:16:18",
+  "x-description": "This is a goctl generated swagger file.",
+  "x-github": "https://github.com/zeromicro/go-zero",
+  "x-go-zero-doc": "https://go-zero.dev/",
+  "x-goctl-version": "1.8.3"
 }

@@ -62,19 +62,19 @@ type (
 )
 service user-api {
 	@doc(
-		summary: 客户登录
+		summary: "客户登录"
 	)
 	@handler  LoginPhone
 	post /login-phone( LoginPhoneReq) returns( LoginPhoneResp)
 
 	@doc(
-		summary: 微信扫码登录
+		summary: "微信扫码登录"
 	)
 	@handler  LoginWechat
 	post /login-wechat( LoginWechatReq) returns( LoginWechatResp)
 
 	@doc(
-		summary: 微信手机号绑定
+		summary: "微信手机号绑定"
 	)
 	@handler  LoginBindPhone
 	post /bind( LoginBindPhoneReq) returns( LoginBindPhoneResp)
@@ -88,7 +88,7 @@ service user-api {
 )
 service user-api {
 	@doc(
-		summary: 获取手机验证码
+		summary: "获取手机验证码"
 	)
 	@handler GetCellPhoneAuth
 	post /get-phone-auth(GetCellPhoneAuthReq) returns(GetCellPhoneAuthResp)

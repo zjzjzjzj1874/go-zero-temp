@@ -9,13 +9,13 @@ info(
 )
 
 type (
-    LivenessRequest struct {}
+    LivenessRequest {}
 
-    LivenessResponse struct {}
+    LivenessResponse {}
 )
 
 @server(
-	prefix: go-zero/
+	prefix: go-zero
 )
 
 service zero {

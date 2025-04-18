@@ -5,7 +5,7 @@ info(
 	desc: "测试"
 	author: "zjzjzjzj"
 	email: "zjzjzjzj1874@gmail.com"
-	version: 1.0
+	version: "1.0"
 )
 
 type OperationTimes {

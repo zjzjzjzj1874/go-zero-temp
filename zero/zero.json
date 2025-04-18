@@ -1,214 +1,147 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "",
-    "version": ""
-  },
-  "schemes": [
-    "http",
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
   "produces": [
     "application/json"
   ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "zero swagger",
+    "title": "zero API",
+    "termsOfService": "https://github.com/zjzjzjzj1874/go-zero-temp",
+    "contact": {
+      "name": "zjzj",
+      "url": "https://github.com/zjzjzjzj1874/go-zero-temp",
+      "email": "zjzjzjzj1874@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/zjzjzjzj1874/go-zero-temp"
+    },
+    "version": "v1"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/v1",
   "paths": {
-    "/go-zero//liveness": {
+    "/go-zero/liveness": {
       "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "健康检查",
-        "operationId": "liveness",
         "responses": {
-          "200": {
-            "description": "A successful response.",
+          "default": {
+            "description": "",
             "schema": {
-              "$ref": "#/definitions/LivenessResponse"
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object"
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
             }
           }
-        },
-        "tags": [
-          "zero"
-        ]
+        }
       }
     },
     "/zero/swagger": {
       "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "swagger文件",
-        "operationId": "swagger",
         "responses": {
-          "200": {
-            "description": "A successful response.",
+          "default": {
+            "description": "",
             "schema": {
-              "$ref": "#/definitions/Response"
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object"
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
             }
           }
-        },
-        "tags": [
-          "zero"
-        ]
+        }
       }
     },
     "/zero/swagger-bin": {
       "get": {
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "https"
+        ],
+        "tags": [
+          ""
+        ],
         "summary": "swagger文件",
-        "operationId": "swaggerGet",
         "responses": {
-          "200": {
-            "description": "A successful response.",
+          "default": {
+            "description": "",
             "schema": {
-              "$ref": "#/definitions/Response"
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "1001-未登录\u003cbr\u003e1002-无权限操作",
+                  "type": "integer",
+                  "example": 0
+                },
+                "data": {
+                  "type": "object"
+                },
+                "msg": {
+                  "description": "business message",
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
             }
           }
-        },
-        "tags": [
-          "zero"
-        ]
+        }
       }
     }
   },
-  "definitions": {
-    "LivenessRequest": {
-      "type": "object",
-      "title": "LivenessRequest"
-    },
-    "LivenessResponse": {
-      "type": "object",
-      "title": "LivenessResponse"
-    },
-    "OperationTimes": {
-      "type": "object",
-      "properties": {
-        "created_time": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "updated_time": {
-          "type": "integer",
-          "format": "int64"
-        }
-      },
-      "title": "OperationTimes",
-      "required": [
-        "created_time",
-        "创建时间",
-        "updated_time",
-        "更新时间"
-      ]
-    },
-    "Operator": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "title": "Operator",
-      "required": [
-        "id",
-        "操作人ID",
-        "name",
-        "操作人名称"
-      ]
-    },
-    "QueryOption": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int32",
-          "default": "1"
-        },
-        "page_size": {
-          "type": "integer",
-          "format": "int32",
-          "default": "10"
-        },
-        "sort_keys": {
-          "type": "string",
-          "default": "-created_time",
-          "description": " \"key1,-key2\""
-        },
-        "project_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "exclude_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "title": "QueryOption",
-      "required": [
-        "当前页",
-        "每页条数",
-        "排序键",
-        "查询键",
-        "不查询的值"
-      ]
-    },
-    "QueryOptionInBody": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int32",
-          "default": "1"
-        },
-        "page_size": {
-          "type": "integer",
-          "format": "int32",
-          "default": "10"
-        },
-        "sort_keys": {
-          "type": "string",
-          "default": "-created_time",
-          "description": " \"key1,-key2\""
-        },
-        "project_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "exclude_fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "title": "QueryOptionInBody",
-      "required": [
-        "当前页",
-        "每页条数",
-        "排序键",
-        "查询键",
-        "不查询的值"
-      ]
-    },
-    "Request": {
-      "type": "object",
-      "title": "Request"
-    },
-    "Response": {
-      "type": "object",
-      "title": "Response"
-    }
-  },
-  "securityDefinitions": {
-    "apiKey": {
-      "type": "apiKey",
-      "description": "Enter JWT Bearer token **_only_**",
-      "name": "Authorization",
-      "in": "header"
-    }
-  }
+  "x-date": "2025-04-18 16:10:02",
+  "x-description": "This is a goctl generated swagger file.",
+  "x-github": "https://github.com/zeromicro/go-zero",
+  "x-go-zero-doc": "https://go-zero.dev/",
+  "x-goctl-version": "1.8.3"
 }

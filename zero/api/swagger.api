@@ -9,8 +9,8 @@ info(
 )
 
 type (
-    Request struct {}
-    Response struct {}
+    Request {}
+    Response {}
 )
 
 @server(
