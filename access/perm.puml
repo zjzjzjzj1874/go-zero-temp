@@ -1,0 +1,65 @@
+@startuml EfficientPermissionSystem
+
+' 核心实体
+class User {
+  + id: Long
+  + username: String
+  + password: String
+  + ...
+}
+
+class Role {
+  + id: Long
+  + name: String
+  + description: String
+  + ...
+}
+
+class Permission {
+  + id: Long
+  + name: String
+  + code: String
+  + apiPath: String
+  + httpMethod: String
+  + description: String
+  + ...
+}
+
+' 展示层关联(逻辑关系)
+User "1" -- "*" UserRoleView : has roles
+Role "1" -- "*" UserRoleView : assigned to
+Role "1" -- "*" RolePermissionView : contains
+Permission "1" -- "*" RolePermissionView : assigned to
+
+' 存储层关联(实际物理关系)
+User "1" -- "*" UserPermission : has
+Permission "1" -- "*" UserPermission : granted to
+
+' 视图实体(用于UI展示)
+class UserRoleView {
+  + userId: Long
+  + roleId: Long
+  + <<transient>>
+}
+
+class RolePermissionView {
+  + roleId: Long
+  + permissionId: Long
+  + <<transient>>
+}
+
+' 实际存储实体
+class UserPermission {
+  + userId: Long
+  + permissionId: Long
+  + grantedAt: DateTime
+  + grantedBy: Long
+  + ...
+}
+
+' 注释说明
+note top of UserRoleView: 仅用于UI展示的角色分配\n不实际存储
+note top of RolePermissionView: 仅用于UI展示的权限分配\n不实际存储
+note top of UserPermission: 实际存储的用户-权限关系\n用于快速验证
+
+@enduml
